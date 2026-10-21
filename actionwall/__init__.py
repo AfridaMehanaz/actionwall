@@ -3,5 +3,6 @@
 __version__ = "0.1.0"
 
 from .actions import Action, ActionBlocked, Decision, Kind, Verdict  # noqa: E402
+from .policy import Policy  # noqa: E402
 
-__all__ = ["Action", "ActionBlocked", "Decision", "Kind", "Verdict", "__version__"]
+__all__ = ["Action", "ActionBlocked", "Decision", "Kind", "Policy", "Verdict", "__version__"]
