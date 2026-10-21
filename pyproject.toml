@@ -1,0 +1,33 @@
+[project]
+name = "actionwall"
+version = "0.1.0"
+description = "A policy firewall for what AI agents do: shell, file, network and tool calls, with secret taint tracking and a tamper-evident audit log."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Afrida Mehanaz" }]
+keywords = ["ai-agents", "llm", "security", "sandbox", "mcp", "prompt-injection", "guardrails"]
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=2.0"]
+dev = ["pytest>=8.0", "mcp>=2.0"]
+
+[project.scripts]
+actionwall = "actionwall.cli:main"
+
+[project.urls]
+Repository = "https://github.com/AfridaMehanaz/actionwall"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["actionwall"]
+
+[tool.setuptools.package-data]
+actionwall = ["bench_scenarios.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
