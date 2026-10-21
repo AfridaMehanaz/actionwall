@@ -1,0 +1,27 @@
+# Example policy for a team repo. Only the keys you set are changed;
+# everything else falls back to the built-in defaults (`actionwall policy`).
+# Note: a list you set replaces the default list rather than extending it.
+
+network:
+  allow_domains:
+    - pypi.org
+    - files.pythonhosted.org
+    - github.com
+    - api.github.com
+    - "*.internal.example.com"   # your own services
+
+shell:
+  default: ask                    # unknown programs need a human
+  ask_patterns:
+    - '\bgit\s+push\b'
+    - '\bterraform\s+(apply|destroy)\b'
+    - '\bkubectl\s+(apply|delete)\b'
+
+tools:
+  allow: [search_docs, read_ticket]
+  ask: [send_email, create_pull_request]
+  deny: ["delete_*", "drop_*"]
+
+limits:
+  max_actions: 300
+  max_network: 50
